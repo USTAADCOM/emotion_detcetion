@@ -18,8 +18,15 @@ classifier = ImageClassifier(land_marker = land_marker)
 WHITE_COLOR = (255, 255, 255)
 GREEN_COLOR = (0, 255, 0)
 BLUE_COLOR = (255, 255, 104)
-
-video = cv2.VideoCapture(0)
+INDEX_NUM = 0
+default_cam = [-1, 0, 1]
+for INDEX_NUM in default_cam:
+    frame_temp = cv2.VideoCapture(INDEX_NUM)
+    if frame_temp.isOpened():
+        break
+video = cv2.VideoCapture(INDEX_NUM)
+# video = cv2.VideoCapture(0)
+# video = cv2.VideoCapture("video.mp4")
 labels_dict = {0:'Angry',1:'Disgust', 2:'Fear', 3:'Happy',4:'Neutral',5:'Sad',6:'Surprise'}
 landmark_points_list = [[(0, 0)]]
 
@@ -52,7 +59,8 @@ class VideoCamera(object):
     Class Doc string.
     """
     def __init__(self):
-        self.video = cv2.VideoCapture(0)
+        self.video = cv2.VideoCapture(INDEX_NUM)
+        # self.video = cv2.VideoCapture("video.mp4")
 
     def __del__(self):
         self.video.release()
