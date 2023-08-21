@@ -3,7 +3,7 @@ Detcet and predict the facial emotion from live stream.
 
 ## Setup
   
-  clone project
+  clone project with Python 3.10.10
   ```code
   git clone https://github.com/USTAADCOM/emotion_detcetion.git
   cd emotion_detcetion
